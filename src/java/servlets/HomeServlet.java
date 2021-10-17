@@ -23,11 +23,11 @@ public class HomeServlet extends HttpServlet {
           HttpSession session=request.getSession();
         
         if ((String)session.getAttribute("username") == null){
-            getServletContext().getRequestDispatcher("/WEB-INF/loginpage.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
             return;
         }
-        else{
-        getServletContext().getRequestDispatcher("/WEB-INF/homepage.jsp").forward(request, response);
+        else {
+        getServletContext().getRequestDispatcher("/WEB-INF/home.jsp").forward(request, response);
         }
     }
 

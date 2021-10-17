@@ -1,5 +1,5 @@
 <%-- 
-    Document   : homepage
+    Document   : home
     Created on : 15-Oct-2021, 3:15:05 AM
     Author     : AponTran
 --%>
