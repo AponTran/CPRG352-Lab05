@@ -38,8 +38,7 @@ public class LoginServlet extends HttpServlet {
            return;
         }
         else if (user != null){
-        response.sendRedirect("home");
-        return;
+            response.sendRedirect("home");
         }
         else {
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
