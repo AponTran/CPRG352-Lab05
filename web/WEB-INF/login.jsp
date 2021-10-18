@@ -18,7 +18,8 @@
             <input type="text" name="username" value="">
             <br>
             <lable>Password:</lable>
-            <input type="password" name="password" value=""><br>
+            <input type="password" name="password" value="">
+            <br>
             <input type="submit" name="login" value="Log in">
         </form>
         <p>${message}</p>

@@ -17,6 +17,4 @@
         <p>Hello ${user.username}.</p>
         <a href="login?logout" name="logout">Log out</a>
     </body>
-    
-
 </html>

@@ -17,22 +17,23 @@ import javax.servlet.http.HttpSession;
  */
 
 public class LoginServlet extends HttpServlet {
-
+    
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        User user=(User)session.getAttribute("user");
+        User user = (User)session.getAttribute("user");
         String message = "";
         
         if (request.getParameterMap().containsKey("logout")) {
+         
             message = "You have successfully logged out.";
             request.setAttribute("message", message);
             session.setAttribute("user",null);
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
         }
-        else if (user != null){
+        else if  (user != null){
             response.sendRedirect("home");
         }
         else {
@@ -45,22 +46,20 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
+        AccountService accountService = new AccountService();
+        
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        
-        AccountService accountService = new AccountService();
-        User user = accountService.login(username, password);
-        
-        session.setAttribute("user",user);
 
-           if (user == null) {
-            request.setAttribute("message", "Invalid login, please try again!");
+        User user = accountService.login(username, password);
+        session.setAttribute("user",user);
+            
+        if (user == null) {
+            request.setAttribute("message", "Invalid login! Please try again.");
             getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-            return;
-        } 
-           else {     
-            response.sendRedirect("home");
-            return;
         }
+        else {
+            response.sendRedirect("home");
+        }     
     }
 }
